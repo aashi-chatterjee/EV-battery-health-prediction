@@ -11,6 +11,15 @@ The most challenging task—cleaning and engineering features from the noisy raw
 1. Problem Solved: The raw dataset contains cycles (like impedance tests or rest cycles) that lack a valid discharge capacity, which would crash a standard pipeline.
 2. Result: The pipeline successfully filtered $\sim 940$ raw cycles to isolate 472 valid charge/discharge pairs. The final dataset has $0$ missing values.
 3. Final Output: A clean matrix of 472 samples with 200 $\mathbf{dQ/dV}$ features and corresponding capacity targets, ready for machine learning model training.
+## ✅ Week 2 Achievements: Feature Validation & BiLSTM Setup
+
+1. Feature Validation: Verified processed dQ/dV features through EDA, confirming non-linear capacity degradation and characteristic peak shifts across all batteries.
+2. Data Preparation: Implemented sequential data structuring (create_sequences) with a 10-cycle lookback and applied Leave-One-Out (LOO) Cross-Validation:
+
+   Train/Validation: B05, B07 | Unseen Test: B18
+
+Model Training: Built and trained a Bidirectional LSTM (BiLSTM) for RUL prediction with early stopping to prevent overfitting and preserve optimal weights.
+
 ----
 ## 📚 Dataset Reference
 Experiments on Li-Ion batteries. Charging and discharging at different temperatures. Records the impedance as the damage criterion. The data set was provided by the NASA Prognostics Center of Excellence (PCoE).
@@ -24,5 +33,3 @@ Data Set Citation: B. Saha and K. Goebel (2007). “Battery Data Set”, NASA Pr
 ### Aashi Chatterjee
 
 Student | Machine Learning & Data Analysis Enthusiast
-
-“I built this project as part of my exploration into predictive modeling for energy systems, focusing on how electrochemical features can reveal battery health over time.”
